@@ -1,0 +1,27 @@
+server {
+ 
+    server_name www.tensornetworktheory.org
+                tensornetworktheory.org;
+ 
+    client_max_body_size 4G;
+ 
+    access_log /webapps/tensornetworktheory/log/nginx-access.log;
+    error_log /webapps/tensornetworktheory/log/nginx-error.log;
+ 
+    #location /static/ {
+    #    alias   /webapps/tensornetworktheory/collectedstatic/;
+    #}
+    
+    #location /media/ {
+    #    alias   /webapps/tensornetworktheory/json_results/;
+    #}
+ 
+    location / {
+        root /webapps/tensornetworktheory/site;
+        index index.html;
+    }
+    
+    location /static/ {
+        alias   /webapps/tnt/collectedstatic/;
+    }
+}

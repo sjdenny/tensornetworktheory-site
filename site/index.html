@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+    <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <title>TNTgo!</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="/static/dashboard/css/bootstrap.css" rel="stylesheet">
+    <link href="/static/dashboard/static/dashboard/css/bootstrap-theme.css" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="/static/dashboard/css/dashboard.css" rel="stylesheet">
+    <script type='text/javascript' src='http://cdn.mathjax.org/mathjax/2.4-latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML'></script>
+  </head>
+
+  <body style="padding-top:60px;">
+
+    <nav class="navbar navbar-default navbar-fixed-top" style="background-color:#fff;">
+      <div class="container-fluid">
+
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar-collapse-1">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="/" style="padding-top:3px;"><img src="images/tntlogo.jpg" height="46"></a>
+        </div> <!-- end of navbar header -->
+
+        <div class="collapse navbar-collapse" id="navbar-collapse-1">
+
+          <ul class="nav navbar-nav">
+            <li id="navbar_home" class="active"><a href="/">Home</a></li>
+            <li id="navbar_tntlibrary"><a href="http://ccpforge.cse.rl.ac.uk/gf/project/tntlibrary/">TNT library</a></li>
+            <li id="navbar_tntgo"><a href="http://www.tntgo.org">TNTgo</a></li>
+         </ul>
+
+        </div> <!-- end of navbar collapse -->
+
+      </div> <!-- end of containter fluid -->
+    </nav> <!-- end of navbar -->
+
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-md-8 col-md-offset-2 col-xs-12">
+            <div class="jumbotron">
+            <h1>Tensor Network Theory</h1>
+            <p>Tensor Network Theory (TNT) provides efficient and accurate methods for simulating strongly correlated quantum systems. It does this by encoding, as a network of tensors, the many-body wave function representing the system and the operators that act on it. TNT algorithms can then be broken down into a series of tensor operations.</p>
+
+            <p> The TNT library contains highly optimised routines for manipulating tensors in the network, which are completely general and do not depend on any network geometry. It also contains routines that can be used to build the most common TNT algorithms, with complete versions of these algorithms, either to use as they are, or modify for your own purposes.</p>
+            <p>   
+            </div>
+
+            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingdevteam">
+                        <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsedevteam" aria-expanded="false" aria-controls="collapsedevteam">Development Team</a>
+                        </h4>
+                    </div>
+                    <div id="collapsedevteam" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingdevteam">
+                        <div class="panel-body">
+                            <p> The library is being developed in the group of Prof Dieter Jaksch at the University in Oxford. For more information about the group and recent publications, please visit the <a href="http://www.physics.ox.ac.uk/qubit/" target="_blank">group website.</a></p>
+                            <p> We are receiving core support from <a href="http://www.softeng-support.ac.uk/" target="_blank">SESC</a> at STFC Rutherford Appleton Laboratory, and have received  University dCSE support from Dr Chris Goodyer at NAG.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingstructure">
+                        <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsestructure" aria-expanded="false" aria-controls="collapsestructure"> Library Structure </a>
+                        </h4>
+                    </div>
+                    <div id="collapsestructure" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingstructure">
+                        <div class="panel-body">
+                        <p> The library routines are organised in a three tier structure, shown right.</p>
+                        <p><img alt="Structure of the TNT library" src="images/structure.jpg" style="float:right; height:568px; width:400px" /></p>
+                        <p> Tier I contains routines for manipulating the tensors that represent the nodes in the network. These routines are completely general and do not depend on network geometry. They include routines for modifying the tensor values through operations on the tensors, changing how the nodes are connected to one another in the network, and getting certain values (e.g. diagonal values) of the tensors. All these routines are contained in the core library libtnt.a, and they can be used to build your own custom TNT algorithms, or in fact use in any other application where tensor manipulations are required. The figure shows two example operations on network nodes that are commonly used in TNT algorithms: firstly node A is contracted along the physical leg with its complex conjugate, and secondly node B is factorised into three new nodes using a singular value decomposition.</p>
+
+                        <p> Tier II contains routines that operate on a network. A few of these (e.g. copying a network, deleting a network) do not depend on network geometry and these are also included in the core library. The remaining routines are specific to the network geometry e.g. a matrix product state (MPS) network. These routines contain building blocks for building the TNT algorithms for these networks types, for example contracting an entire network to find an expectation value on a given site, or applying a sequence of two-site gates.</p>
+
+                        <p> Tier III contains complete algorithms. For example a given algorithm may load an MPS start state and Hamiltonian from an initialisation file, time-evolve the MPS under the Hamiltonian for a given time <em>t</em>, calculating expectation values at given time-intervals. These algorithms can either be used without modification, or can be easily changed to build your own custom routines.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                    <div class="panel-heading" role="tab" id="headingstatus">
+                        <h4 class="panel-title">
+                        <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapsestatus" aria-expanded="false" aria-controls="collapsestatus">
+                        Current Status
+                        </a>
+                        </h4>
+                    </div>
+                    <div id="collapsestatus" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingstatus">
+                        <div class="panel-body">
+                            <p>Currently availably for download is the beta version of the core pre-compiled library libtnt.a, which contains optimised tier I routines and general tier II routines. Also available for download is a tier II MPS library libtntMps.a, which contains a variety of routines for manipulating MPS networks. Algorithms are provided for time-evolving a start state using time-evolving block decimation, and finding the ground state using a variational approach. Quantum number conservation is also implemented in the code.</p>
+                            <p>You can also use the library through a web interface at <a href="http://www.tntgo.org" target="_blank">www.tntgo.org</a>, without the need for any installation, to perform ground state and time evolution calculations of one-dimensional systems.</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="panel panel-default">
+                        <div class="panel-heading" role="tab" id="headingciting">
+                            <h4 class="panel-title">
+                            <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseciting" aria-expanded="false" aria-controls="collapseciting">
+                            Citing the library
+                            </a>
+                            </h4>
+                        </div>
+                        <div id="collapseciting" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingciting">
+                        <div class="panel-body">
+                            <p>To cite the library please use the following (updating with the version number you used).</p>
+                            <p>Tensor Network Theory Library, Beta Version 1.0.13 (2015), S. Al-Assam, S. R. Clark, D. Jaksch and TNT Development team, www.tensornetworktheory.org</p>
+                            <p>Note: If you are unsure which version number you used, it will be saved to all your output files, as well as being displayed at the top of the output printed to your screen during simulation.</p>
+                        </div>
+                    </div>
+                </div>
+    <div class="panel panel-default">
+    <div class="panel-heading" role="tab" id="headingFour">
+    <h4 class="panel-title">
+    <a class="collapsed" data-toggle="collapse" data-parent="#accordion" href="#collapseFour" aria-expanded="false" aria-controls="collapseFour">
+    Plans for development
+    </a>
+    </h4>
+    </div>
+    <div id="collapseFour" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingFour">
+    <div class="panel-body">
+    <p>In the near future, development will focus on completing the 1D routines, adding further routines to the MPS library for MPS-MPO manipulations and for simulating the dynamics of open systems using quantum trajectories, as well providing high performance distributed memory parallel routines for time-evolution.</p>
+
+<p>During this time, as well as continual optimisations to the core library, new routines will also be added to the MPS library to take into account&nbsp;<a href="http://ccpforge.cse.rl.ac.uk/gf/project/tntlibrary/tracker/">feature requests</a>&nbsp;and feedback from users.</p>
+
+<p>After this, development will focus on adding to the tier II libraries, providing libraries for different network types (e.g. MERA, PEPS) moving to concentrating on TNT algorithms in two dimensions. These will first be provided in a serial library, before highly optimised libraries are released with parallelism implemented at the network and algorithm level as well as utilising the already parallelised core tensor routines.</p> 
+    </div>
+    </div>
+    </div>
+</div>
+
+        </div>
+      </div>
+
+
+    </div>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="/static/dashboard/js/jquery-2.0.3.js"></script>
+    <script src="/static/dashboard/js/bootstrap.min.js"></script>
+    <script src="/static/dashboard/js/bootstrap-select.min.js"></script>
+    <script src="/static/dashboard/js/button.js"></script>
+
+  </body>
+</html>
+
+
+Keep up to date with news on the project
+
+<p>
+To keep up to date, please join the tntlibrary-users mailing list by subscribing <a href="http://ccpforge.cse.rl.ac.uk/mailman/listinfo/tntlibrary-users">here</a>. You will then be informed whenever a new version of the library is available.</p>
+
+Give us your feedback
+
+<p>We would appreciate any feedback you have on the TNT library, to help us develop stable code that is of use to as many researchers as possible.</p>
+
+<p>If you think there are any features that would be useful, that are not already described in the &#39;Plans for development section&#39;, e.g. an operation on a node/network, or an option for input or output of data, please request it in the <a href="http://ccpforge.cse.rl.ac.uk/gf/project/tntlibrary/tracker/?action=TrackerItemBrowse&amp;tracker_id=484">Feature Request</a> tracker. We will change the status to let you know if your feature is added to the list of features that developers are working on, if it is in progress, or if it is complete.</p>
+
+<p>If you notice a bug, please report it in the <a href="http://ccpforge.cse.rl.ac.uk/gf/project/tntlibrary/tracker/?action=TrackerItemBrowse&amp;tracker_id=485">Bug Report</a> tracker with as much detail as you can, and we will work to resolve it as soon as possible.</p>
+
+<p>For any other comments or questions please contact <a href="mailto:support@tensornetworktheory.org">support@tensornetworktheory.org</a></p>
+
